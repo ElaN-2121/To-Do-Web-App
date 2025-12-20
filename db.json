@@ -1,0 +1,11 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "Pick up mail",
+      "category": "work",
+      "dueDate": "2025-12-23",
+      "completed": false
+    }
+  ]
+}

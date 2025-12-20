@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO Doist</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="icon">☰</div>
+        <h1>Welcome to TO Doist</h1>
+        <div class="notify-icon">🔔</div>
+        <nav></nav>
+      </header>
 
+      <main>
+        <input type="text" class="search-input" placeholder="Search tasks..." />
+        <form id="task-form" class="add-task-container">
+          <div class="form-group">
+            <input type="text" id="task-input" placeholder="Task Tile" required/>
+            <input type="text" id="task-desc" placeholder="Description" required/>
+            <select id="task-category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="urgent">Urgent</option>
+            </select>
+            <input type="date" id="task-date" required/>
+          </div>
+          <button type="submit" class="add-btn">＋ Add Task</button>
+        </form>
+
+        <div class="section-label">To Do</div>
+        <div id="todo-list">
+          <!-- Tasks will be dynamically added here -->
+        </div>
+
+        <div class="section-label">Completed</div>
+        <div id="completed-list">
+          <!-- Completed tasks will be dynamically added here -->
+        </div>
+      </main>
+      <footer>&copy; 2025 To Doist</footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
