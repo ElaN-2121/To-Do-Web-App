@@ -3,8 +3,25 @@
     {
       "id": "1",
       "title": "Pick up mail",
+      "description": "from the post office",
       "category": "work",
       "dueDate": "2025-12-23",
+      "completed": false
+    },
+    {
+      "id": "ce10",
+      "title": "Go to Uni",
+      "description": "need to attend class at 9am",
+      "category": "urgent",
+      "dueDate": "2025-12-24",
+      "completed": false
+    },
+    {
+      "id": "ff4a",
+      "title": "Milk ",
+      "description": "Buy Milk",
+      "category": "work",
+      "dueDate": "2025-12-25",
       "completed": false
     }
   ]
