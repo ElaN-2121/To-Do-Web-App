@@ -19,16 +19,29 @@
         <input type="text" class="search-input" placeholder="Search tasks..." />
         <form id="task-form" class="add-task-container">
           <div class="form-group">
-            <input type="text" id="task-input" placeholder="Task Tile" required/>
-            <input type="text" id="task-desc" placeholder="Description" required/>
+            <input
+              type="text"
+              id="task-input"
+              placeholder="Task Tile"
+              required
+            />
+            <input
+              type="text"
+              id="task-desc"
+              placeholder="Description"
+              required
+            />
             <select id="task-category">
-                <option value="work">Work</option>
-                <option value="personal">Personal</option>
-                <option value="urgent">Urgent</option>
+              <option value="work">Work</option>
+              <option value="personal">Personal</option>
+              <option value="urgent">Urgent</option>
             </select>
-            <input type="date" id="task-date" required/>
+            <input type="date" id="task-date" required />
           </div>
-          <button type="submit" class="add-btn">＋ Add Task</button>
+          <button type="submit" class="add-btn">
+            <span class="add-icon">＋</span>
+            <span class="add-btn-text">Add task</span>
+          </button>
         </form>
 
         <div class="section-label">To Do</div>
