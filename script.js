@@ -21,7 +21,7 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
-if (localStorage.getItem("theme") === "dark") {
+if (localStorage.getItem("theme") === "dark") { // still keeps the mode after reload or refresh
   document.body.classList.add("dark-mode");
   themeToggle.textContent = "☀️";
 }
@@ -31,23 +31,38 @@ toggleAddBtn.addEventListener("click", () => {
 });
 
 //Fetch and render tasks
-async function fetchTasks(query = "") {
+
+let allTasks = [];
+
+async function fetchTasks() {
   try {
-    const url = query ? `${API_URL}?q=${encodeURIComponent(query)}` : API_URL;
-    const response = await fetch(url);
+    const response = await fetch(API_URL);
     const tasks = await response.json();
-    renderTasks(tasks);
+
+    allTasks = tasks;       // 👈 STORE tasks
+    renderTasks(allTasks);  // 👈 Render full list
   } catch (error) {
-    console.error("Error fetching tasks: ", error);
+    console.error("Error fetching tasks:", error);
   }
 }
+
+
 searchInput.addEventListener("input", (e) => {
-  fetchTasks(e.target.value);
+  const query = e.target.value.toLowerCase().trim();
+
+  const filtered = allTasks.filter(task =>
+    task.title.toLowerCase().includes(query) ||
+    task.description.toLowerCase().includes(query) ||
+    task.category.toLowerCase().includes(query)
+  );
+
+  renderTasks(filtered);
 });
 
+
 function renderTasks(tasks) {
-  todoList.innerHTML = "";
-  completedList.innerHTML = "";
+  todoList.innerHTML = ""; //Clears old tasks before re-rendering
+  completedList.innerHTML = ""; //Clears old completed tasks before re-rendering
 
   tasks.forEach((task) => {
     const taskCard = document.createElement("div");
@@ -103,14 +118,11 @@ function renderTasks(tasks) {
       todoList.appendChild(taskCard);
     }
   });
-  if (document.body.classList.contains("dark-mode")) {
-    document.body.classList.add("dark-mode");
-  }
 }
 
 //Post: Handeling new task submission
 taskForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  e.preventDefault(); // Prevent form from reloading the page
 
   const newTask = {
     title: taskInput.value,

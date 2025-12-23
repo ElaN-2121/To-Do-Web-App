@@ -1,14 +1,6 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "Pick up mail",
-      "description": "from the post office",
-      "category": "work",
-      "dueDate": "2025-12-23",
-      "completed": false
-    },
-    {
       "id": "ce10",
       "title": "Go to Uni",
       "description": "need to attend class at 9am",
@@ -22,6 +14,14 @@
       "description": "Buy Milk",
       "category": "work",
       "dueDate": "2025-12-25",
+      "completed": false
+    },
+    {
+      "id": "1ef6",
+      "title": "Go to School",
+      "description": "am bored",
+      "category": "work",
+      "dueDate": "2005-12-25",
       "completed": false
     }
   ]
