@@ -41,7 +41,25 @@ function renderTasks(tasks) {
                     <div class="task-desc">${task.description}</div>
                     <div class="due-date">${task.category} | Due: ${task.dueDate}</div>
                 </div>
+                <button class="delete-btn">🗑️</button>
             `;
+      //task deletion section
+      const deleteBtn = taskCard.querySelector(".delete-btn");
+
+      deleteBtn.addEventListener("click", async () => {
+        try {
+          const response = await fetch(`${API_URL}/${task.id}`, {
+            method: "DELETE",
+          });
+
+          if (response.ok) {
+            fetchTasks();
+          }
+        } catch (error) {
+          console.error("Error deleting task:", error);
+        }
+      });
+
       todoList.appendChild(taskCard);
     }
   });

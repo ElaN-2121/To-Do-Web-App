@@ -1,5 +1,5 @@
 :root {
-  --bg-body: #eee8e8;
+  --bg-body: #f8f3ef;
   --bg-container: #f7efeb;
   --bg-card: #fdf9f7;
   --search-bg: #f0eeed;
@@ -134,6 +134,12 @@ button {
 .due-date {
   font-size: 11px;
   color: var(--text-muted);
+}
+.delete-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 footer {
   text-align: center;
