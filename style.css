@@ -1,9 +1,9 @@
 :root {
-  --bg-body: #e8eaf6;
-  --bg-container: #f8f9fa;
-  --bg-card: #ffffff;
-  --search-bg: #eceef1;
-  --text-main: #333333;
+  --bg-body: #eee8e8;
+  --bg-container: #f7efeb;
+  --bg-card: #fdf9f7;
+  --search-bg: #f0eeed;
+  --text-main: #27354c;
   --text-muted: #888888;
   --accent: #ffb74d;
   --border: #eeeeee;
@@ -34,6 +34,11 @@ header {
   margin-bottom: 20px;
   color: var(--text-main);
 }
+input,
+select,
+button {
+  font-family: inherit;
+}
 .search-input {
   width: 100%;
   padding: 12px;
@@ -42,6 +47,9 @@ header {
   background: var(--search-bg);
   margin-bottom: 15px;
   box-sizing: border-box;
+}
+.add-task-container.hidden {
+  display: none;
 }
 .add-task-container {
   display: flex;
@@ -52,6 +60,8 @@ header {
   box-shadow: var(--add-task-box-shadow);
   flex-direction: column;
   gap: 10px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
 }
 .add-task-container input,
 .add-task-container select {
@@ -60,12 +70,16 @@ header {
   border-radius: 8px;
 }
 .add-btn {
-  background: none;
+  background-color: var(--bg-card);
+  padding: 10px;
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: var(--task-card-box-shadow);
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
   align-items: center;
   border: none;
-  cursor: pointer;
 }
 .add-icon {
   background: var(--accent);
@@ -74,10 +88,22 @@ header {
   border-radius: 50%;
   font-size: 20px;
   color: var(--bg-card);
+  justify-content: flex-end;
+  cursor: pointer;
 }
 .add-btn-text {
   color: var(--btn-text);
   font-size: 13px;
+  justify-content: flex-start;
+}
+.add-task {
+  background: var(--accent);
+  padding: 5px;
+  width: 80px;
+  color: var(--bg-card);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 .section-label {
   font-size: 12px;

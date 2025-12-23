@@ -1,3 +1,5 @@
+const toggleAddBtn = document.getElementById("toggle-add-task");
+const taskFormContainer = document.getElementById("task-form");
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskDesc = document.getElementById("task-desc");
@@ -6,6 +8,10 @@ const taskDate = document.getElementById("task-date");
 const todoList = document.getElementById("todo-list");
 const searchInput = document.querySelector(".search-input");
 const API_URL = "http://localhost:3000/todos";
+
+toggleAddBtn.addEventListener("click", () => {
+  taskFormContainer.classList.toggle("hidden");
+});
 
 //Fetch and render tasks
 async function fetchTasks(query = "") {
@@ -72,6 +78,5 @@ taskForm.addEventListener("submit", async (e) => {
 });
 
 fetchTasks();
-
 
 //json-server --watch db.json use this to start the json file server

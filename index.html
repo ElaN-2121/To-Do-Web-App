@@ -17,7 +17,11 @@
 
       <main>
         <input type="text" class="search-input" placeholder="Search tasks..." />
-        <form id="task-form" class="add-task-container">
+        <button class="add-btn">
+          <span class="add-btn-text">Add task...</span>
+          <span id="toggle-add-task" class="add-icon">＋</span>
+        </button>
+        <form id="task-form" class="add-task-container hidden">
           <div class="form-group">
             <input
               type="text"
@@ -38,10 +42,7 @@
             </select>
             <input type="date" id="task-date" required />
           </div>
-          <button type="submit" class="add-btn">
-            <span class="add-icon">＋</span>
-            <span class="add-btn-text">Add task</span>
-          </button>
+          <button type="submit" class="add-task">Add task</button>
         </form>
 
         <div class="section-label">To Do</div>
