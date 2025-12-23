@@ -87,7 +87,7 @@ button {
   height: 30px;
   border-radius: 50%;
   font-size: 20px;
-  color: var(--bg-card);
+  color: white;
   justify-content: flex-end;
   cursor: pointer;
 }
@@ -126,10 +126,25 @@ button {
   border: 2px solid var(--border);
   border-radius: 50%;
   margin-right: 15px;
+  cursor: pointer;
+  display: flex;
+}
+.check-circle.checked {
+  background-color: var(--accent);
+}
+.check-circle.checked::after {
+  content: "✓";
+  color: white;
+  margin: auto;
+  font-weight: bold;
 }
 .task-title {
   font-size: 15px;
   color: var(--text-main);
+  font-weight: 500;
+}
+.task-desc {
+  font-size: 13px;
 }
 .due-date {
   font-size: 11px;

@@ -7,6 +7,7 @@ const taskCategory = document.getElementById("task-category");
 const taskDate = document.getElementById("task-date");
 const todoList = document.getElementById("todo-list");
 const searchInput = document.querySelector(".search-input");
+const completedList = document.getElementById("completed-list");
 const API_URL = "http://localhost:3000/todos";
 
 toggleAddBtn.addEventListener("click", () => {
@@ -30,36 +31,59 @@ searchInput.addEventListener("input", (e) => {
 
 function renderTasks(tasks) {
   todoList.innerHTML = "";
+  completedList.innerHTML = "";
+
   tasks.forEach((task) => {
-    if (!task.completed) {
-      const taskCard = document.createElement("div");
-      taskCard.className = "task-card";
-      taskCard.innerHTML = `
-                <div class="check-circle"></div>
+    const taskCard = document.createElement("div");
+    taskCard.className = "task-card";
+    taskCard.innerHTML = `
+                <div class="check-circle ${
+                  task.completed ? "checked" : ""
+                }"></div>
                 <div class="task-details">
                     <div class="task-title">${task.title}</div>
                     <div class="task-desc">${task.description}</div>
-                    <div class="due-date">${task.category} | Due: ${task.dueDate}</div>
+                    <div class="due-date">${task.category} | Due: ${
+      task.dueDate
+    }</div>
                 </div>
                 <button class="delete-btn">🗑️</button>
             `;
-      //task deletion section
-      const deleteBtn = taskCard.querySelector(".delete-btn");
+    //working check-circle with task completion
+    const checkCircle = taskCard.querySelector(".check-circle");
+    checkCircle.addEventListener("click", async () => {
+      try {
+        await fetch(`${API_URL}/${task.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ completed: !task.completed }),
+        });
+        fetchTasks();
+      } catch (error) {
+        console.error("Error updating task:", error);
+      }
+    });
 
-      deleteBtn.addEventListener("click", async () => {
-        try {
-          const response = await fetch(`${API_URL}/${task.id}`, {
-            method: "DELETE",
-          });
+    //task deletion section
+    const deleteBtn = taskCard.querySelector(".delete-btn");
 
-          if (response.ok) {
-            fetchTasks();
-          }
-        } catch (error) {
-          console.error("Error deleting task:", error);
+    deleteBtn.addEventListener("click", async () => {
+      try {
+        const response = await fetch(`${API_URL}/${task.id}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          fetchTasks();
         }
-      });
+      } catch (error) {
+        console.error("Error deleting task:", error);
+      }
+    });
 
+    if (task.completed) {
+      completedList.appendChild(taskCard);
+    } else {
       todoList.appendChild(taskCard);
     }
   });
