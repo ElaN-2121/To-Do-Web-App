@@ -8,7 +8,23 @@ const taskDate = document.getElementById("task-date");
 const todoList = document.getElementById("todo-list");
 const searchInput = document.querySelector(".search-input");
 const completedList = document.getElementById("completed-list");
+const themeToggle = document.getElementById("theme-icon");
 const API_URL = "http://localhost:3000/todos";
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  if (document.body.classList.contains("dark-mode")) {
+    themeToggle.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
+  } else {
+    themeToggle.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  }
+});
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  themeToggle.textContent = "☀️";
+}
 
 toggleAddBtn.addEventListener("click", () => {
   taskFormContainer.classList.toggle("hidden");
@@ -87,6 +103,9 @@ function renderTasks(tasks) {
       todoList.appendChild(taskCard);
     }
   });
+  if (document.body.classList.contains("dark-mode")) {
+    document.body.classList.add("dark-mode");
+  }
 }
 
 //Post: Handeling new task submission

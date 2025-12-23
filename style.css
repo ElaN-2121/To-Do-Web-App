@@ -1,17 +1,38 @@
 :root {
-  --bg-body: #f8f3ef;
-  --bg-container: #f7efeb;
+  --bg-body: #252d3f;
+  --bg-container: #f9f4f1;
   --bg-card: #fdf9f7;
-  --search-bg: #f0eeed;
+  --search-bg: #f0edec;
   --text-main: #27354c;
   --text-muted: #888888;
   --accent: #ffb74d;
-  --border: #eeeeee;
+  --border: #a7a9b0;
   --footer-text: #bbb;
   --btn-text: #333333;
   --container-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   --add-task-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --task-card-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.dark-mode {
+  --bg-body: #f8f3ef;
+  --bg-container: #252d3f;
+  --bg-card: #353c4f;
+  --search-bg: #353c4f;
+  --text-main: white;
+  --text-muted: #b1afaf;
+  --accent: #ffb74d;
+  --border: #747373;
+  --footer-text: #9b9faf;
+  --btn-text: #9b9faf;
+  --container-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --add-task-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   --task-card-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%) brightness(150%) contrast(100%);
+}
+.dark-mode ::-webkit-input-placeholder {
+  color: var(--text-muted);
 }
 body {
   background-color: var(--bg-body);
@@ -34,10 +55,21 @@ header {
   margin-bottom: 20px;
   color: var(--text-main);
 }
+#theme-icon {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: large;
+}
 input,
 select,
 button {
   font-family: inherit;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+.task-date {
+  color: var(--text-main);
 }
 .search-input {
   width: 100%;
@@ -47,6 +79,7 @@ button {
   background: var(--search-bg);
   margin-bottom: 15px;
   box-sizing: border-box;
+  box-shadow: var(--task-card-box-shadow);
 }
 .add-task-container.hidden {
   display: none;
@@ -68,6 +101,7 @@ button {
   padding: 8px;
   border: 1px solid var(--border);
   border-radius: 8px;
+  background-color: var(--bg-container);
 }
 .add-btn {
   background-color: var(--bg-card);
@@ -145,6 +179,7 @@ button {
 }
 .task-desc {
   font-size: 13px;
+  color: var(--text-main);
 }
 .due-date {
   font-size: 11px;
