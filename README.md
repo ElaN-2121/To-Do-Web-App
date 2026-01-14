@@ -9,7 +9,6 @@ This project is a To-Do Application built with a modern user interface and power
   - Due Date
   - 📋 View all tasks in a styled layout
   - ✔️ Mark tasks as completed or not completed
-  - ✏️ Edit existing tasks
   - 🗑️ Delete tasks
 All actions automatically update both the UI and the backend.
 ## 🛠️ Technologies Used
